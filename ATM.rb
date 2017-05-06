@@ -108,7 +108,6 @@ end
 m = Menu.new
 m.emitir
 
-
 # Exercicio:
 # 1- Poder depositar na ATM [X]
 # 2- Poder depositar na Conta do Usuário[X]
