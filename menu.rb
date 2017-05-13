@@ -1,7 +1,12 @@
+# 1- Juntar a conta com Usuário. Um usuário possui uma Conta
+# 2- Assim que ligar a maquina ela devera solicitar o numero do cartao e a senha
+# 3- Caso o numero do cartao e a senha estejam corretos, o menu principal devera ser mostrado
+# 4- Caso o numero do cartao e a senha nao sejam corretos ou ainda nao existe, devera criar a mesma para poder acessar
 class Menu
 
   def initialize
-		@atm = Atm.new
+    conta = Conta.new
+		@atm = Atm.new(conta)
     @usuario = Usuario.new
   end
 
