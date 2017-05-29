@@ -1,10 +1,3 @@
-class Utils
-
-  def self.custom_get
-    gets.strip
-  end
-end
-
 class Menu
 
   def initialize
@@ -99,7 +92,7 @@ class Menu
       puts 'Qual o tipo de conta que voce possui em nosso banco?
         1 - Conta Poupanca           2 - Conta Corrente'
       opcao2 = gets.to_i
-      if opcao2 == 1        
+      if opcao2 == 1
         puts mensagem_senha_conta_poupanca
         senha_conta_poupanca = Utils.custom_get
         confirmacao_senha_poupanca(senha_conta_poupanca)
@@ -107,14 +100,12 @@ class Menu
       if opcao2 == 2
         puts mensagem_senha_conta_corrente
         senha_conta_corrente = Utils.custom_get
-        confirmacao_senha_corrente(senha_conta_corrente)    
+        confirmacao_senha_corrente(senha_conta_corrente)
       end
     end
     if opcao == 2
-      @usuario.set_nome
-      @usuario.set_cpf
-      @usuario.set_data_de_nascimento
-      @usuario.create_cartao
+      creator = UserCreator.new()
+      creator.create()
       tela_inicial
     end
   end

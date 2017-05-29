@@ -1,42 +1,21 @@
 require "date"
 
-class Utils
+class User
 
-	def self.custom_get
-		gets.strip
-	end
+  attr_accessor :name, :cpf, :born_at, :account
 
-end
-
-class Conta
-
-	def initialize
-		@balanco = rand(10000)
-	end
-
-	def balanco
-    	@balanco
-  	end
-
-  	def deposit(amount)
-    	@balanco += amount
-  	end
-
-  	def pode_sacar?(amount)
-	    amount <= balanco
-	end
-
-	def withdraw(amount)
-	    @balanco -= amount
-	end
-
-	def saldo_insuficiente?(amount)
-	    !pode_sacar?(amount)
-	end
+  def initialize(name, cpf, born_at, account)
+    @name    = name
+    @cpf     = cpf
+    @botn_at = born_at
+    @account = account
+  end
 
 end
 
-class Usuario 
+
+class Usuario
+
 	def set_nome
 		puts "Informe seu nome completo."
 		@nome = gets
@@ -73,7 +52,7 @@ class Usuario
 
 	def data_de_nascimento
 		@data_de_nascimento
-		
+
 	end
 
 
