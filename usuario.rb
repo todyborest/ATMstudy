@@ -2,15 +2,41 @@ require "date"
 
 class Utils
 
-
 	def self.custom_get
 		gets.strip
 	end
 
 end
 
-class Usuario
+class Conta
 
+	def initialize
+		@balanco = rand(10000)
+	end
+
+	def balanco
+    	@balanco
+  	end
+
+  	def deposit(amount)
+    	@balanco += amount
+  	end
+
+  	def pode_sacar?(amount)
+	    amount <= balanco
+	end
+
+	def withdraw(amount)
+	    @balanco -= amount
+	end
+
+	def saldo_insuficiente?(amount)
+	    !pode_sacar?(amount)
+	end
+
+end
+
+class Usuario 
 	def set_nome
 		puts "Informe seu nome completo."
 		@nome = gets
@@ -74,7 +100,6 @@ class Usuario
 			while @num_poupanca.length < 6
 				@num_poupanca << rand(10)
 			end
-			puts "obrigado pela paciencia, seu cartao de conta poupanca chegará em sua residencia dentro de 15 dias devidamente configurado e pronto para uso."
 		end
 
 		if conta == 2
@@ -95,19 +120,30 @@ class Usuario
 			while @num_corrente.length < 10
 				@num_corrente << rand(10)
 			end
-			puts "obrigado pela paciencia, seu cartao de conta corrente chegará em sua residencia dentro de 15 dias devidamente configurado e pronto para uso."
 		end
 	end
 
-	def cartao_poupanca
+	def senha_cartao_poupanca
 		@senha_poupanca
+	end
+
+	def senha_de_seg_cartao_poupanca
 		@senha_seguranca
+	end
+
+	def num_cartao_poupanca
 		@num_poupanca
 	end
 
-	def cartao_corrente
+	def senha_cartao_corrente
 		@senha_corrente
+	end
+
+	def senha_de_seg_cartao_corrente
 		@senha_seguranca2
+	end
+
+	def num_cartao_corrente
 		@num_corrente
 	end
 
