@@ -1,10 +1,3 @@
-class Utils
-
-  def self.custom_get
-    gets.strip
-  end
-end
-
 class Menu
 
   def initialize
@@ -52,7 +45,7 @@ class Menu
   end
 
   def confirmacao_senha_corrente(pass_corrente)
-    while @pass_corrente != pass_corrente
+    while senha_corrente != pass_corrente
       puts'Deseja digitar novamente a senha ou voltar para o menu de cadastro?
         1 - Digitar senha novamente  2 - Menu de cadastro'
       choice = gets.to_i
@@ -76,7 +69,7 @@ class Menu
   end
 
   def confirmacao_senha_poupanca(pass_poupanca)
-    while @pass_poupanca != pass_poupanca
+    while senha_poupanca != pass_poupanca
       puts 'Deseja digitar novamente a senha ou voltar para o menu de cadastro?
         1 - Digitar senha novamente  2 - Menu de cadastro'
       escolha = gets.to_i
@@ -99,7 +92,7 @@ class Menu
       puts 'Qual o tipo de conta que voce possui em nosso banco?
         1 - Conta Poupanca           2 - Conta Corrente'
       opcao2 = gets.to_i
-      if opcao2 == 1        
+      if opcao2 == 1
         puts mensagem_senha_conta_poupanca
         senha_conta_poupanca = Utils.custom_get
         confirmacao_senha_poupanca(senha_conta_poupanca)
@@ -107,20 +100,19 @@ class Menu
       if opcao2 == 2
         puts mensagem_senha_conta_corrente
         senha_conta_corrente = Utils.custom_get
-        confirmacao_senha_corrente(senha_conta_corrente)    
+        confirmacao_senha_corrente(senha_conta_corrente)
       end
     end
     if opcao == 2
-      @usuario.set_nome
-      @usuario.set_cpf
-      @usuario.set_data_de_nascimento
-      @usuario.create_cartao
+      creator = UserCreator.new()
+      creator.create()
       tela_inicial
     end
   end
 
   def emitir
-    puts "Ola senhor #{@usuario.nome} em que podemos lhe ajudar hoje?"
+    puts "Seja bem vindo senhor #{@usuario.nome}
+Em que podemos lhe ajudar hoje?"
 		puts "1 - Balanco do caixa eletronico"
 		puts "2 - Balanco da conta"
     puts "3 - Sacar"
@@ -130,6 +122,6 @@ class Menu
   end
 
   def mensagem_de_finalizacao
-  	"Agradecemos por ser nosso cliente, tenha uma otima semana"
+  	'Agradecemos por ser nosso cliente tenha uma otima semana'
   end
 end

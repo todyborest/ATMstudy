@@ -6,9 +6,9 @@ class Atm
 		mensagem_de_balanco_da_atm
 	end
 
-  def conta
-    @conta
-  end
+	def conta
+    	@conta
+	end
 
 	def depositar_na_atm(quantia)
 		@balanco_atm += quantia
@@ -16,27 +16,26 @@ class Atm
 	end
 
 	def depositar_conta(deposit)
-    conta.deposit(deposit)
-    puts "Voce depositou a quantia de R$ #{deposit} com sucesso, sua conta agora possui R$ #{conta.balanco}"
+    	conta.deposit(deposit)
+    	puts "Voce depositou a quantia de R$ #{deposit} com sucesso, sua conta agora possui R$ #{conta.balanco}"
 	end
 
-  def pode_sacar?(amount)
-    amount <= balanco_atm && conta.pode_sacar?(amount)
-  end
+	def pode_sacar?(amount)
+    	amount <= balanco_atm && conta.pode_sacar?(amount)
+	end
 
-  def balanco_atm
-    @balanco_atm
-  end
+	def balanco_atm
+    	@balanco_atm
+  	end
 
 	def sacar(valor)
     if pode_sacar?(valor)
-			@balanco_atm -= valor
-      conta.withdraw(valor)
-			puts mensagem_de_saque_com_sucesso(valor)
+		@balanco_atm -= valor
+    	conta.withdraw(valor)
+		puts mensagem_de_saque_com_sucesso(valor)
 		else
 			puts mensagem_de_saque_incompleto(valor)
 		end
-
     	puts mensagem_de_balanco_da_atm
     	puts mensagem_de_balanco_do_usuario
 	end
