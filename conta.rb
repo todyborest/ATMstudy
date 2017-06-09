@@ -1,6 +1,13 @@
 class Conta
 
-  def initialize
+  attr_accessor :acc_type, :password, :secutiry_pas,
+    :account_numb
+
+  def initialize(acc_type,password,security_pass,account_numb)
+    @acc_type = acc_type
+    @password = password
+    @security_pass = security_pass
+    @account_numb = account_numb
     @balanco = rand(10000)
   end
 
