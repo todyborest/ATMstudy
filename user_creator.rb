@@ -2,9 +2,9 @@ class UserCreator
 
   def initialize
     @name    = gets_name
-	@cpf     = gets_cpf
+    @cpf     = gets_cpf
     @born_at = gets_born_at
-    #@account = AccCreator.new().create()
+    @account = AccCreator.new().create()
   end
 
   def create
@@ -18,7 +18,7 @@ class UserCreator
 
   private
 
-  def  all_attributes_are_valid?
+  def all_attributes_are_valid?
     !@name.nil? && @name != '' && !@cpf.nil? && @cpf != '' && !@born_at.nil? && @born_at != ''
   end
 
