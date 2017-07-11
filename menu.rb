@@ -18,18 +18,20 @@ class Menu
 
       puts 'Qual o tipo de conta que voce possui em nosso banco?
         1 - Conta Poupanca           2 - Conta Corrente'
-      option = gets.to_i
-      puts mensagem_senha(option)
-      password = Utils.custom_get
+      opcao2 = gets.to_i
 
-      if option == 1
+      if opcao2 == 1
+        puts mensagem_senha_conta_poupanca
+        password = Utils.custom_get
+
         account_type = 1
-        confirmacao_senha(password, account_type)
+        confirmacao_senha_poupanca(password, account_type)
       end
-
-      if option == 2
+      if opcao2 == 2
+        puts mensagem_senha_conta_corrente
+        password  = Utils.custom_get
         account_type = 2
-        confirmacao_senha(password, account_type)
+        confirmacao_senha_corrente(password, account_type)
       end
     end
 
@@ -74,15 +76,11 @@ class Menu
       end
   end
 
-  def mensagem_senha (option)
-    if option == 1
-      'Por favor digite a senha de sua Conta Poupanca'
-    elsif option == 2
-      'Por favor digite a senha de sua Conta Corrente'
-    end
+  def mensagem_senha_conta_corrente
+    'Por favor digite a senha de sua Conta Corrente'
   end
 
-  def confirmacao_senha(password, account_type)
+  def confirmacao_senha_corrente(password, account_type)
     $users.each do |user|
       if account_type == user.account.acc_type && user.account.password == password
         @usuario = user
@@ -95,9 +93,36 @@ class Menu
         1 - Digitar senha novamente  2 - Menu de cadastro'
     escolha = gets.to_i
     if escolha == 1
-      puts 'Por favor digite a senha de sua Conta'
+      puts 'Por favor digite a senha de sua Conta Corrente'
       new_password = Utils.custom_get
-      confirmacao_senha(new_password, account_type)
+      confirmacao_senha_corrente(new_password, account_type)
+    end
+    if escolha == 2
+      tela_inicial
+    end
+  end
+
+  def mensagem_senha_conta_poupanca
+    'Por favor digite a senha de sua Conta Poupanca'
+  end
+
+  def confirmacao_senha_poupanca(password, account_type)
+    $users.each do |user|
+      if account_type == user.account.acc_type && user.account.password == password
+        @usuario = user
+        @atm = Atm.new(@usuario.account)
+        emitir
+        return
+      end
+    end
+
+    puts 'Deseja digitar novamente a senha ou voltar para o menu de cadastro?
+        1 - Digitar senha novamente  2 - Menu de cadastro'
+    escolha = gets.to_i
+    if escolha == 1
+      puts 'Por favor digite a senha de sua Conta Poupanca'
+      new_password = Utils.custom_get
+      confirmacao_senha_poupanca(new_password, account_type)
     end
     if escolha == 2
       tela_inicial

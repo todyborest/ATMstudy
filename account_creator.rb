@@ -94,4 +94,3 @@ class AccCreator
     num_corrente
 	end
 end
-

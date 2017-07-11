@@ -15,5 +15,4 @@ class Cadastros
 	lista_cadastros = 
 
 
-
 end
